@@ -1,3 +1,3 @@
 # web
 Project
--Αλλαγή του ονόματος αρχείου connectdb => conection σε όλα τα αρχεία
+-Αλλαγή του ονόματος αρχείου connectdb => connection σε όλα τα αρχεία
