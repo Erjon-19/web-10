@@ -14,13 +14,13 @@ date_default_timezone_set('Europe/Athens'); //set the default time zone used by 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!--div for logo --->
+<!--div for logo and admin link--->
 <div class="container"> 
 <div class=row>
 <div class=col-md-3>
-	 <IMG SRC="logoskg1.png" ALT="some text" WIDTH=250 HEIGHT=110>
+	 <IMG SRC="logo.png" ALT="some text" WIDTH=250 HEIGHT=110>
 		
-				<a href='admin/index.php'><button class='btn btn-primary' style='width:200px;'>Admin page</button></a>
+		<a href='admin/index.php'><button class='btn btn-primary' style='width:200px;'>Admin page</button></a>
 		
 </div>
 
