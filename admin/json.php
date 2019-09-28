@@ -1,19 +1,24 @@
 <?php
 include "../connection.php";
 
-$q=mysqli_query($cn,"select * from polygon,curve where polygon.id=curve.id_polyg and time_v=$_GET[tm] ");
-$js="{\"res\":[";
-while ($r=mysqli_fetch_array($q))
+$result=mysqli_query($cn,"select * from polygon,curve where polygon.id=curve.id_polyg and time_v=$_GET[tm] ");
+
+$js="{\"reslt\":[";
+
+while($row=mysqli_fetch_array($result))
 {
-	if($r['coords']!="")
+	if($row['coords']!="")
 	{
-		if($r['places']>0)
+		if($row['places']>0)
 		{
-			
-			$elftheres_theseis=$r['places']-$r['population']*0.2-$r['dvalue']*$r['places'];
-			if($elftheres_theseis<0) $elftheres_theseis=0;
-			$katilimenes_theseis=$r['places']-$elftheres_theseis;
-			$pososto=$katilimenes_theseis/$r['places'];
+			//ypologismos eleftherwn thesewn
+			$eleftheres_theseis=$row['places']-$row['population']*0.2-$row['dvalue']*$row['places'];
+			if($eleftheres_theseis<0) $eleftheres_theseis=0;
+
+			//ypologismos katilimenwn thesewn 
+			$katilimenes_theseis=$row['places']-$eleftheres_theseis;
+			//anathesh pososto katilimemwn thesewn
+			$pososto=$katilimenes_theseis/$row['places'];
 						
 		}
 		else 
@@ -21,15 +26,18 @@ while ($r=mysqli_fetch_array($q))
 			$pososto=1;
 		}
 		
-		$js=$js."{\"id\":\"$r[id]\", \"center\":\"$r[center]\", \"p\":\"$pososto\"},";
+		//kwdikopoihsi syntetagmenwn
+		$js=$js."{\"id\":\"$row[id]\", \"center\":\"$row[center]\", \"p\":\"$pososto\"},";
 		
 		
 	}
 }
-	$js=$js."{\"id\":\"$r[id]\", \"center\":\"$r[center]\", \"p\":\"$pososto\"}";
-	$js=$js."]}";
+	
+	//apothikeysh twn apotelesmatwn sto js
+	$js=$js."{\"id\":\"$row[id]\", \"center\":\"$row[center]\", \"p\":\"$pososto\"}";
+	$js=$js."]}"; //kleinei to string
 		
-	echo $js;
+	echo $js; 
 	
 ?>
 
