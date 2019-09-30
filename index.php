@@ -11,9 +11,8 @@ date_default_timezone_set('Europe/Athens'); //set the default time zone used by 
 body {
 background-image: url("sky.jpg") !important ;
 background-repeat: no-repeat;
-background-size: 100% 100%; ;
+background-size: 100% 100%;
 }
-
 </style>
   <title>ThesParking</title>
   <meta charset="utf-8">
@@ -55,12 +54,12 @@ background-size: 100% 100%; ;
 	 ?>
 	 </select>
 	 <br>
-	 <input type=submit class='btn btn-primary' value='Color Map-Simulation'>
+	 <input type=submit class='btn btn-primary' value='Διαθεσιμότητα Parking'>
 	</form>
 	
 	<?php
 	
-		echo "<div class='alert alert-success'>Time Color Map: $time:00</div>";
+		echo "<div class='alert alert-success'>Ώρα: $time:00</div>";
 	
 	?>
 	<!--map div -->
@@ -69,7 +68,6 @@ background-size: 100% 100%; ;
 	 <br><br>
 
    <script>
-
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -77,25 +75,29 @@ background-size: 100% 100%; ;
           center: {lat:  40.625603, lng: 22.950524},
           mapTypeId: 'terrain'
         });
+	
+				/*var cityCircle = new google.maps.Circle({ //created a circle to mark the radius
+					strokeColor: '#FF0000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					map: map,
+					radius: diameter,
+					clickable: false
+				});
+				*/
+				
 
-	function addCircle(center){
-    	circle = new google.maps.Circle({
-		strokeColor: '#FF0000',
-    	strokeOpacity: 0.8,
-		strokeWeight: 2,
-		fillColor: '#FF0000',
-		fillOpacity: 0.35,
-		map: map,
-		center: center,
-		radius: 100,
-		clickable: false
-    	});
-	}
+
+
+
 		 
 		<?php
 		
-			$result=mysqli_query($cn,"select * from polygon");
-			
+			$result=mysqli_query($cn,"SELECT * FROM polygon");
+
+
 			//gia na min einai diasparta ta omadopoioume se stiles
 			while($row=mysqli_fetch_array($result))
 			{
@@ -117,7 +119,6 @@ background-size: 100% 100%; ;
 						}
 						echo "];
 						
-
 						polygono$row[id] = new google.maps.Polygon({
 							paths: coords$row[id],
 							fillColor: '#888'   //grey color
@@ -126,17 +127,18 @@ background-size: 100% 100%; ;
 					
 					google.maps.event.addListener(polygono$row[id], 'click', function(event) {
 
-						addCircle(event.latLng);
-						var click = event.latLng;
-						var locs = {lat: event.latLng.lat(), lng: event.latLng.lng()};
-						var n = arePointsNear(user, locs, diameter);
-						console.log(locs);
+						//var click = event.latLng;
+						var dest = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+						var n = arePointsNear($row[center], dest, 200);
+						 console.log(dest);
+						// console.log($row[id]);
+						// console.log($row[center]);
+						// console.log($row[places]);
+						// console.log(n);
 						//window.open('place.php', 'top=100', 'width=100', 'height=80');
 						  
 						  
 					});
-
-
 					"; 
 				} 
 		
@@ -152,20 +154,21 @@ background-size: 100% 100%; ;
 			{	
 				$id=$recolor->id;
 				$p=$recolor->p;
-				if($p<0.59) echo " polygono$id.setOptions({ fillColor: 'green'});";
-				if($p>=0.59 && $p<0.84) echo " polygono$id.setOptions({ fillColor: 'yellow'});";
-				if($p>=0.84)	echo " polygono$id.setOptions({ fillColor: 'red'});";  
+				if($p<0.59) echo "polygono$id.setOptions({ fillColor: 'green'});";
+				if($p>=0.59 && $p<0.84) echo "polygono$id.setOptions({ fillColor: 'yellow'});";
+				if($p>=0.84)	echo "polygono$id.setOptions({ fillColor: 'red'});";  
 			}	
 		
 		?>
       } 
-	  function arePointsNear(checkPoint, centerPoint, m) { // credits to user:69083
-		var km = m/1000;
-		var ky = 40000 / 360;
-		var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
-		var dx = Math.abs(centerPoint.lng - checkPoint.lng) * kx;
-		var dy = Math.abs(centerPoint.lat - checkPoint.lat) * ky;
-		return Math.sqrt(dx * dx + dy * dy) <= km;
+	  function arePointsNear(checkPoints, centerPoint, m) { 
+			console.log(checkPoints);
+			var km = m/1000;
+			var ky = 40000 / 360;
+			var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
+			var dx = Math.abs(centerPoint.lng - checkPoints.lng) * kx;
+			var dy = Math.abs(centerPoint.lat - checkPoints.lat) * ky;
+			return Math.sqrt(dx * dx + dy * dy) <= km;
 		}
 	  
     </script>
@@ -177,3 +180,4 @@ background-size: 100% 100%; ;
 
 </div>
 </body>
+</html>
