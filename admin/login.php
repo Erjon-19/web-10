@@ -5,7 +5,7 @@ include "../connection.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Admin</title>
+  <title>Διαχειριστής</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -35,13 +35,16 @@ if (isset($_POST['usr']))
  
  if(@$_SESSION['lg']==0 || @$_SESSION['lg']=="")
  {
-	 echo "<div class=col-md-2>
-	<h2>Menu </h2>
-	 <a href='../index.php'><button class='btn btn-primary' style='width:200px;'>User page</button></a>
+	echo "<div class=col-md-4> 
+	</div>";
+
+	 echo "<div class=col-md-4>
+	 <h1>Λάθος στοιχεία</h1>
+	 <a href='../index.php'><button class='btn btn-primary' style='width:200px;'>Επιστροφή</button></a>
 	 </div>
 	 <div class=col-md-10>
 	 
-	 <h1>Error on login</h1>
+
 	 </div>
 	 
 	 ";
@@ -51,7 +54,7 @@ if (isset($_POST['usr']))
  {
 	 include "menu.php";
 	 
-	 echo "<h1> Welcome to our system</h1>";
+	 echo "<h1>Παπαδόπουλος Χάρης(Διαχειριστής)</h1>";
 	 
  }
  

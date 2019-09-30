@@ -5,12 +5,30 @@ include "../connection.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Admin</title>
+  <title>Διαχειριστής</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style>
+
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style> 
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -67,9 +85,9 @@ include "menu.php";
 	 echo "<br>
 	 </div>
 	 <div class=col-md-12>
-	 <h3>Demand Curve Parking per Hour  </h3>
-	 <table border=1 class=table>";
-	 echo "<tr><td>Hour<br>Value</td>";
+	 <h3>Καμπύλη Ζήτησης ανά Ώρα</h3>
+	 <table border=3 class=table>";
+	 echo "<tr><td>Ώρα<br>Τιμή</td>";
 	 
 	while( $r=mysqli_fetch_array($q))
 	{

@@ -21,7 +21,7 @@ body {
 <div class=container>
 <div class=row>
  <div class=col-md-3>
-	 <h2 style="color: white; font-size:300%;"> Menu</h2>
+	  <h2 style="color: #660033; font-size:300%;">Επιστροφή</h2> 
 	<a href='../index.php'><button   class='btn btn-primary' style='background-color: #483D8B; color:white;width:200px ;' >Σελίδα Χρήστη</button></a>
 		
 	 
@@ -38,7 +38,7 @@ body {
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
     </div>
-    <button type="submit" class="btn btn-default">Login</button>
+    <button type="submit" class="btn btn-default">Σύνδεση</button>
   </form>
 
 </div>

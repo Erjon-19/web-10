@@ -37,12 +37,12 @@ include "menu.php";
 	 ?>
 	 </select>
 	 <br>
-	 <input type=submit class='btn btn-primary' value='Color Map-Simulation'>
+	 <input type=submit class='btn btn-primary' value='Διαθεσιμότητα Parking'>
 	</form>
 	
 	<?php
 	
-		echo "<div class='alert alert-success'>Time Color Map: $time:00</div>";
+		echo "<div class='alert alert-success'>Ώρα: $time:00</div>";
 	
 	?>
 	
@@ -98,7 +98,7 @@ include "menu.php";
 					
 					
 					var inf = new google.maps.InfoWindow({
-          content: \"Polulation: $row[population]<br>Places Parking: $row[places]<br><a href='edit_sq.php?id=$row[id]'>Edit Square</a>\"
+          content: \"Πλήθυσμός: $row[population]<br>Θέσεις Parking: $row[places]<br><a href='edit_sq.php?id=$row[id]'>Επεξεργασία</a>\"
         });
 					inf.setPosition(event.latLng);
 				     inf.open(map);

@@ -1,7 +1,7 @@
 <?php
 include "../connection.php";
 
-$result=mysqli_query($cn,"select * from polygon,curve where polygon.id=curve.id_polyg and time_v=$_GET[tm] ");
+$result=mysqli_query($cn,"SELECT * FROM polygon,curve WHERE polygon.id=curve.id_polyg AND time_v=$_GET[tm] ");
 
 $js="{\"reslt\":[";
 

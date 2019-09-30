@@ -54,7 +54,7 @@ li a:hover:not(.active) {
 <body>
 
 <ul>
-  <li><a class="active" href='upload.php'><button class='btn btn-primary' style='width:170px;'>Ανέβασμα δεδομένων</button></a></li>
+  <li><a href='upload.php'><button class='btn btn-primary' style='width:170px;'>Ανέβασμα δεδομένων</button></a></li>
   <li><a href='del.php'><button class='btn btn-primary' style='width:150px;'>Διαγραφη δεδομένων</button></a></li>
   <li><a href='map.php'><button class='btn btn-primary' style='width:150px;'>Εξομοίωση Χάρτη</button></a></li>
   <li style="float:right"><a href='logout.php'><button class='btn btn-primary' style='width:150px;'>Αποσύνδεση</button></a></li>

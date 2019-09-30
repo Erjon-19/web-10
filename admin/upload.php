@@ -5,7 +5,7 @@ include "../connection.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Admin</title>
+  <title>Διαχειριστής</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -39,6 +39,7 @@ if(isset($_POST['submit']) && !empty($_POST["submit"]))
 				
 				
 			mysqli_query($cn,$s);
+			//exei to id tou teleutaiou query pou exei ginei sth database
 			$idp=mysqli_insert_id($cn);
 			       
 			
@@ -54,7 +55,7 @@ if(isset($_POST['submit']) && !empty($_POST["submit"]))
 	
 		echo "
 		 <div class=\"alert alert-success\">
-		All Data Save to DB
+		Συγχαρητήρια! Επιτυχής αποθήκευση Δεδομένων στη Βάση!!!
 		</div>";
 	
 }
@@ -63,17 +64,14 @@ if(isset($_POST['submit']) && !empty($_POST["submit"]))
  
 
 	 ?>
-	 <h2> Upload Data Page </h2>
+	 <h2> Σελίδα ενημέρωσης αρχείου KML </h2>
 		<form action="upload.php" method="post" enctype="multipart/form-data" style='padding:30px; background-color:#eef;'>
 		<br><br>
-    <label for="kml">Give Upload File:</label>
+    <label for="kml">Επιλογή αρχείου:</label>
     <input type="file" class="form-control" name="kml" id=kml  >
-     <input type="submit" class='btn btn-default' value='UpLoad' name=submit>
+     <input type="submit" class='btn btn-default' value='Ανέβασμα' name=submit>
 </form>
 	 <br><br>
-	
-	
-
 
 </div>
 </body>
